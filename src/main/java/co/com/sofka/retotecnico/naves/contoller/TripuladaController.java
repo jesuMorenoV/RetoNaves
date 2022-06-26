@@ -13,25 +13,26 @@ import java.util.Optional;
 public class TripuladaController {
 
     @Autowired
-    TripuladaService tripuladaService ;
+    TripuladaService tripuladaService;
 
     @PostMapping("/tripulado")
-    public Tripulada guardar(Tripulada tripulada){
+    public Tripulada guardar(Tripulada tripulada) {
         return tripuladaService.guardar(tripulada);
     }
 
     @GetMapping("/tripulados")
-    public List<Tripulada> listar(){
+    public List<Tripulada> listar() {
         return tripuladaService.listar();
     }
 
     @GetMapping("/tripulado/id/{id}")
-    public Optional<Tripulada> buscarId(@PathVariable("id") String id){
-        return  tripuladaService.busacarPorId(id);
+    public Optional<Tripulada> buscarId(@PathVariable("id") String id) {
+        return Optional.ofNullable(tripuladaService.buscarPorId(id));
     }
 
-    @GetMapping("/tripulado/capacidad_personas/{capacidad_personas}")
-    public List<Tripulada> buscarcCpacidadPersonas(@PathVariable("capacidad_personas") String capacidadPersonas){
-        return  tripuladaService.buscarPorCapacidadPersonas(capacidadPersonas);
+    @DeleteMapping("/tripulada/id/{id}")
+    public void eliminar(@PathVariable("id")String id){
+        tripuladaService.eliminar(id);
     }
+
 }

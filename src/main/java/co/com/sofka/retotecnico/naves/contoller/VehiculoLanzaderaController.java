@@ -26,15 +26,12 @@ public class VehiculoLanzaderaController {
 
     @GetMapping("/vehiculolanzadera/id/{id}")
     public Optional<VehiculoLanzadera> buscarId(@PathVariable("id") String id){
-        return  vehiculoLanzaderaService.busacarPorId(id);
+        return Optional.ofNullable(vehiculoLanzaderaService.buscarPorId(id));
     }
 
-    @GetMapping("/vehiculolanzadera/capasidad_carga/{capasidad_carga}")
-    public List<VehiculoLanzadera> buscarcCpacidadPersonas(@PathVariable("capasidad_carga") String capasidadCarga){
-        return  vehiculoLanzaderaService.buscarPorCapasidadCarga(capasidadCarga);
+    @DeleteMapping("/vehiculolanzadera/id/{id}")
+    public void eliminar(@PathVariable("id")String id){
+        vehiculoLanzaderaService.eliminar(id);
     }
-    @GetMapping("/vehiculolanzadera/tipo_Carga/{tipo_carga}")
-    public List<VehiculoLanzadera> buscarcTipoCarga(@PathVariable("tipo_Carga") String tipoCarga){
-        return  vehiculoLanzaderaService.buscarPorTipoCarga(tipoCarga);
-    }
+
 }

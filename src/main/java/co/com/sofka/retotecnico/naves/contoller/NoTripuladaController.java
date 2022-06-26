@@ -29,11 +29,11 @@ public class NoTripuladaController {
 
     @GetMapping("/notripulado/id/{id}")
     public Optional<NoTripulada> buscarId(@PathVariable("id") String id){
-        return  noTripuladaService.busacarPorId(id);
+        return Optional.ofNullable(noTripuladaService.buscarPorId(id));
+    }
+    @DeleteMapping("/notripulada/id/{id}")
+    public void eliminar(@PathVariable("id")String id){
+        noTripuladaService.eliminar(id);
     }
 
-    @GetMapping("/notripulado/tipo_estudio/{tipo_estudio}")
-    public List<NoTripulada> buscarTipoEstudio(@PathVariable("tipo_estudio") String tipoEstudio){
-        return  noTripuladaService.buscarPorTipoEstudio(tipoEstudio);
-    }
 }
