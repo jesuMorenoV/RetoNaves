@@ -3,6 +3,7 @@ package co.com.sofka.retotecnico.naves.contoller;
 import co.com.sofka.retotecnico.naves.model.NoTripulada;
 import co.com.sofka.retotecnico.naves.service.implementacion.NoTripuladaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class NoTripuladaController {
     NoTripuladaService noTripuladaService;
 
     @PostMapping("/notripulado")
+    @ResponseStatus(HttpStatus.CREATED)
     public NoTripulada guardar(NoTripulada noTripulada){
         return noTripuladaService.guardar(noTripulada);
     }
