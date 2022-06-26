@@ -1,5 +1,6 @@
 package co.com.sofka.retotecnico.naves.service;
 
+import co.com.sofka.retotecnico.naves.model.NoTripulada;
 import co.com.sofka.retotecnico.naves.model.Tripulada;
 
 import java.util.List;
@@ -10,7 +11,10 @@ public interface TripuladaServieI {
 
     public Tripulada guardar(Tripulada tripulada);
     public List<Tripulada> listar();
-    public Optional<Tripulada> busacarPorId(String id);
-    public List<Tripulada>  buscarPorCapacidadPersonas(String capacidadPersonas);
+
+    public void eliminar(String id);
+
+    public Tripulada buscarPorId(String id);
+
 
 }

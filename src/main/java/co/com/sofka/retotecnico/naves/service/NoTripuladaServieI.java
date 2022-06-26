@@ -9,7 +9,8 @@ public interface NoTripuladaServieI {
 
     public NoTripulada guardar(NoTripulada noTripulada);
     public List<NoTripulada>  listar();
-    public Optional<NoTripulada> busacarPorId(String id);
-    public List<NoTripulada>  buscarPorTipoEstudio(String tipoEstudio);
+    public void eliminar(String id);
+
+    public NoTripulada buscarPorId(String id);
 
 }

@@ -1,5 +1,6 @@
 package co.com.sofka.retotecnico.naves.service;
 
+import co.com.sofka.retotecnico.naves.model.NoTripulada;
 import co.com.sofka.retotecnico.naves.model.VehiculoLanzadera;
 
 import java.util.List;
@@ -10,8 +11,9 @@ public interface VehiculoLanzaderaServieI {
 
     public VehiculoLanzadera guardar(VehiculoLanzadera vehiculoLanzadera);
     public List<VehiculoLanzadera> listar();
-    public Optional<VehiculoLanzadera> busacarPorId(String id);
-    public List<VehiculoLanzadera>  buscarPorCapasidadCarga(String capasidadCarga);
-    public List<VehiculoLanzadera>  buscarPorTipoCarga(String tipoCarga);
+
+    public void eliminar(String id);
+
+    public VehiculoLanzadera buscarPorId(String id);
 
 }

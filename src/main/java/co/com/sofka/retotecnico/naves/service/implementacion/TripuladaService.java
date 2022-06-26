@@ -1,5 +1,6 @@
 package co.com.sofka.retotecnico.naves.service.implementacion;
 
+import co.com.sofka.retotecnico.naves.model.NoTripulada;
 import co.com.sofka.retotecnico.naves.model.Tripulada;
 import co.com.sofka.retotecnico.naves.repository.TripuladaRepository;
 import co.com.sofka.retotecnico.naves.service.TripuladaServieI;
@@ -15,6 +16,7 @@ public class TripuladaService implements TripuladaServieI {
     @Autowired
     TripuladaRepository tripuladaRepository;
 
+
     @Override
     public Tripulada guardar(Tripulada tripulada) {
         return tripuladaRepository.save(tripulada);
@@ -22,17 +24,26 @@ public class TripuladaService implements TripuladaServieI {
 
     @Override
     public List<Tripulada> listar() {
-        return tripuladaRepository.findAll();
+        return (List<Tripulada>) tripuladaRepository.findAll();
     }
 
     @Override
-    public Optional<Tripulada> busacarPorId(String id) {
-        return tripuladaRepository.findById(id);
+    public void eliminar(String id) {
+        try{
+            tripuladaRepository.deleteById(id);
+        }catch (Exception e){
+            System.out.println("Ocurrio un error ");
+        }
+
     }
 
     @Override
-    public List<Tripulada> buscarPorCapacidadPersonas(String capacidadPersonas) {
-        return tripuladaRepository.findByCapacidadPersonas(capacidadPersonas);
+    public Tripulada buscarPorId(String id) {
+
+        Optional<Tripulada> optionalList = tripuladaRepository.findById(id);
+
+        return (optionalList.get());
     }
+
 
 }

@@ -15,6 +15,7 @@ public class NoTripuladaService implements NoTripuladaServieI {
     @Autowired
     NoTripuladaRepository noTripuladaRepository;
 
+
     @Override
     public NoTripulada guardar(NoTripulada noTripulada) {
         return noTripuladaRepository.save(noTripulada);
@@ -22,16 +23,25 @@ public class NoTripuladaService implements NoTripuladaServieI {
 
     @Override
     public List<NoTripulada> listar() {
-        return noTripuladaRepository.findAll();
+        return (List<NoTripulada>) noTripuladaRepository.findAll();
     }
 
     @Override
-    public Optional<NoTripulada> busacarPorId(String id) {
-        return noTripuladaRepository.findById(id);
+    public void eliminar(String id) {
+        try{
+            noTripuladaRepository.deleteById(id);
+        }catch (Exception e){
+            System.out.println("Ocurrio un error ");
+        }
     }
 
     @Override
-    public List<NoTripulada>  buscarPorTipoEstudio(String tipoEstudio) {
-        return noTripuladaRepository.findByTipoEstudio(tipoEstudio);
+    public NoTripulada buscarPorId(String id) {
+        Optional<NoTripulada> optionalList = noTripuladaRepository.findById(id);
+
+        return (optionalList.get());
     }
+
+
+
 }
